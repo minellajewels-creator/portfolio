@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.cdnfonts.com/css/clash-display');
+
+:root {
+  --bg-dark: transparent;
+  --bg-darker: rgba(20, 20, 20, 0.5);
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --text-main: #e0e0e0;
+  --text-muted: #888888;
+  
+  --accent-cyan: #a3a3a3;
+  --accent-gold: #c2c2c2;
+  --accent-red: #666666;
+  --accent-green: #9ca3af;
+
+  --font-head: 'Clash Display', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  
+  --glow-cyan: 0 0 20px rgba(255, 255, 255, 0.15);
+  --glow-gold: 0 0 20px rgba(255, 255, 255, 0.15);
+  
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =====================================
+   RESET & BASE
+   ===================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  /* Premium Grey Gradient Base */
+  background: linear-gradient(45deg, #111111, #1a1a1a, #262626, #111111);
+  background-size: 400% 400%;
+  animation: liquidBg 25s ease infinite;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  /* Hide default cursor on desktop */
+  cursor: none; 
+}
+
+@keyframes liquidBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-main);
+  cursor: none;
+}
+
+li {
+  list-style: none;
+}
+
+section {
+  padding: 100px 5vw;
+  position: relative;
+}
+
+/* =====================================
+   CUSTOM CURSOR
+   ===================================== */
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-cyan);
+  transition: background-color 0.3s ease;
+}
+
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* GSAP updates transform */
+}
+
+/* Interactive states for cursor */
+.cursor-hover .cursor-outline {
+  width: 60px;
+  height: 60px;
+  border-color: var(--accent-cyan);
+  background-color: rgba(0, 240, 255, 0.1);
+  mix-blend-mode: exclusion;
+}
+
+.theme-gold .cursor-dot { background-color: var(--accent-gold); }
+.theme-gold .cursor-hover .cursor-outline {
+  border-color: var(--accent-gold);
+  background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* =====================================
+   PAGE TRANSITION OVERLAY
+   ===================================== */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-darker);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10000;
+  pointer-events: none;
+  transform: translateY(100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transition-text {
+  font-family: var(--font-head);
+  font-size: 3rem;
+  color: var(--accent-cyan);
+  opacity: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* =====================================
+   PRELOADER
+   ===================================== */
+.preloader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: var(--bg-darker);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preloader h1 {
+  font-size: 4rem;
+  background: linear-gradient(90deg, var(--text-main), #555);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulse 1.5s infinite alternate;
+}
+.loading-bar-wrapper {
+  width: 300px;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.loading-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--accent-cyan);
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1.02); }
+}
+
+/* =====================================
+   NAVBAR
+   ===================================== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 2rem 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent-cyan);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+  width: 100%;
+}
+
+.theme-gold .nav-links a::after { background-color: var(--accent-gold); }
+
+/* =====================================
+   GLOWFX & UTILITIES
+   ===================================== */
+.text-cyan { color: var(--accent-cyan); }
+.text-gold { color: var(--accent-gold); }
+.text-red { color: var(--accent-red); }
+
+.glow-cyan { text-shadow: var(--glow-cyan); }
+.glow-gold { text-shadow: var(--glow-gold); }
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 100%; left: 0; width: 100%; height: 100%;
+  background: var(--text-main);
+  transition: var(--transition-smooth);
+  z-index: -1;
+}
+.btn:hover {
+  color: var(--bg-dark);
+  border-color: var(--text-main);
+}
+.btn:hover::before {
+  top: 0;
+}
+
+.magnetic-wrap {
+  display: inline-block;
+}
+
+/* Background Gradients */
+.bg-gradient-radial {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw; height: 60vw;
+  background: radial-gradient(circle, rgba(0,240,255,0.05) 0%, rgba(5,5,5,0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* =====================================
+   GLITCH ANIMATION
+   ===================================== */
+.glitch-wrapper {
+  position: relative;
+}
+.glitch {
+  position: relative;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--accent-red);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--accent-cyan);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(21px, 9999px, 83px, 0); }
+  20% { clip: rect(6px, 9999px, 16px, 0); }
+  40% { clip: rect(80px, 9999px, 4px, 0); }
+  60% { clip: rect(64px, 9999px, 95px, 0); }
+  80% { clip: rect(32px, 9999px, 11px, 0); }
+  100% { clip: rect(100px, 9999px, 70px, 0); }
+}
+@keyframes glitch-anim2 {
+  0% { clip: rect(15px, 9999px, 8px, 0); }
+  20% { clip: rect(56px, 9999px, 2px, 0); }
+  40% { clip: rect(2px, 9999px, 90px, 0); }
+  60% { clip: rect(74px, 9999px, 45px, 0); }
+  80% { clip: rect(12px, 9999px, 51px, 0); }
+  100% { clip: rect(80px, 9999px, 20px, 0); }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .cursor-dot, .cursor-outline { display: none; }
+  html, body, a { cursor: auto; }
+  .nav-links { display: none; }
+}

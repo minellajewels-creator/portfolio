@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Ventures | Ashok PS</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Projects Page Specific */
+        .project-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 5vw;
+        }
+
+        /* 1. Minella Jewels (Luxury/Gold) */
+        .minella {
+            background: transparent;
+        }
+        .luxury-card {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(10,10,10,0.9));
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 20px;
+            padding: 4rem;
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer {
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212,175,55,0.2), transparent);
+            transform: skewX(-20deg);
+            animation: shimmerEffect 4s infinite;
+        }
+        @keyframes shimmerEffect {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        .luxury-title {
+            font-size: 4rem;
+            color: var(--accent-gold);
+            font-family: var(--font-head);
+            margin-bottom: 1rem;
+            letter-spacing: 5px;
+        }
+
+        /* 2. @bro_goats (Content Creation/Red) */
+        .bro-goats {
+            background: transparent;
+            flex-direction: column;
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: var(--accent-red);
+            color: white;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: absolute;
+            top: 100px;
+        }
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: tickerText 15s linear infinite;
+        }
+        @keyframes tickerText {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .content-card {
+            background: #111;
+            border-left: 5px solid var(--accent-red);
+            padding: 3rem;
+            max-width: 800px;
+            margin-top: 5rem;
+            box-shadow: 0 0 30px rgba(255,51,51,0.1);
+        }
+        .content-card h2 {
+            font-size: 3rem;
+            color: var(--accent-red);
+        }
+
+        /* 3. Freelance Web Dev (Tech/Cyan) */
+        .freelance {
+            background: transparent;
+            display: block; /* override flex to use grid below */
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 1200px;
+            margin-inline: auto;
+        }
+        .dev-card {
+            background: rgba(0,240,255,0.02);
+            border: 1px solid rgba(0,240,255,0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: var(--transition-smooth);
+        }
+        .dev-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow-cyan);
+        }
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .pill {
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .pill-cyan { background: rgba(0,240,255,0.1); color: var(--accent-cyan); border-color: var(--accent-cyan); }
+    </style>
+</head>
+<body>
+
+    <div class="preloader">
+        <h1>CREATIONS</h1>
+        <div class="loading-bar-wrapper">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="transition-text">PROJECTS</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav>
+        <div class="logo">A.PS</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="career.html">Career</a>
+            <a href="projects.html" class="active">Projects</a>
+            <a href="travel-lifestyle.html">Lifestyle</a>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: Minella Jewels -->
+    <section class="project-section minella">
+        <div class="luxury-card theme-gold" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="shimmer"></div>
+            <p class="text-muted" style="letter-spacing: 3px; text-transform: uppercase;">Entrepreneurship</p>
+            <h2 class="luxury-title glow-gold">Minella Jewels</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6; color: #ddd; max-width: 600px; margin: 0 auto 2rem auto;">
+                A premium jewelry brand born out of a passion for luxury and fine aesthetics. Meticulously curated collections spanning gold and rose-gold finishes.
+            </p>
+            <div class="magnetic-wrap">
+                <a href="#" class="btn" style="border-color: var(--accent-gold); color: var(--accent-gold);">View Brand</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: @bro_goats -->
+    <section class="project-section bro-goats">
+        <div class="ticker-wrap">
+            <div class="ticker">
+                CONTENT CREATION • COMMUNITY BUILDING • @BRO_GOATS • ENGAGEMENT • LIFESTYLE • CONTENT CREATION • COMMUNITY BUILDING • @BRO_GOATS
+            </div>
+        </div>
+        <div class="content-card" data-aos="fade-up">
+            <h2>@bro_goats</h2>
+            <p class="text-muted" style="margin-top: 1rem; font-size: 1.1rem; line-height: 1.6;">
+                A rapidly growing content ecosystem focusing on youth culture, lifestyle, and dynamic storytelling. We build engaging narratives that resonate with modern audiences across social platforms.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Freelance Web Dev -->
+    <section class="project-section freelance">
+        <div style="text-align: center; margin-bottom: 2rem;" data-aos="fade-down">
+            <h2 class="section-title text-cyan glow-cyan" style="font-size: 3rem;">Freelance Web Dev</h2>
+            <p class="text-muted">Delivering high-performance, dynamic web experiences.</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="dev-card" data-aos="fade-up" data-aos-delay="0">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">E-Commerce Platform</h3>
+                <p class="text-muted">A full-stack, scalable online store with custom animations, cart functionalities, and secure checkout integration.</p>
+                <div class="tech-pills">
+                    <span class="pill pill-cyan">React</span>
+                    <span class="pill">Node.js</span>
+                    <span class="pill">GSAP</span>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="dev-card" data-aos="fade-up" data-aos-delay="100">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Corporate Dashboard</h3>
+                <p class="text-muted">A data-heavy administrative dashboard providing real-time analytics with interactive charts and dark mode.</p>
+                <div class="tech-pills">
+                    <span class="pill pill-cyan">Vue.js</span>
+                    <span class="pill">Tailwind</span>
+                    <span class="pill">Chart.js</span>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="dev-card" data-aos="fade-up" data-aos-delay="200">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Portfolio Templates</h3>
+                <p class="text-muted">Sleek, heavily animated portfolio templates designed for creatives, leveraging vanilla web technologies.</p>
+                <div class="tech-pills">
+                    <span class="pill pill-cyan">HTML/CSS</span>
+                    <span class="pill">Vanilla JS</span>
+                    <span class="pill">AOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('preloaderDone', () => {
+            AOS.init({ once: true });
+        });
+    </script>
+</body>
+</html>

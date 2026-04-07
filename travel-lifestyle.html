@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel & Lifestyle | Ashok PS</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .page-header {
+            padding-top: 150px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Travel Section */
+        .travel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .travel-card {
+            height: 400px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: none; /* Let custom cursor handle it */
+        }
+        .travel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0.8;
+        }
+        .travel-overlay {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95) 80%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        .travel-card:hover img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+        .travel-card:hover .travel-overlay {
+            bottom: 0;
+            opacity: 1;
+        }
+        .travel-overlay h3 {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+        .travel-overlay p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Split Section: Fitness & Anime */
+        .lifestyle-split {
+            display: flex;
+            gap: 2rem;
+            margin-top: 8rem;
+            max-width: 1400px;
+            margin-inline: auto;
+        }
+        .lifestyle-card {
+            flex: 1;
+            padding: 4rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition-smooth);
+        }
+        
+        .fitness {
+            background: radial-gradient(circle at top right, rgba(255,0,0,0.1), #050505);
+        }
+        .fitness:hover {
+            border-color: rgba(255,51,51,0.5);
+            box-shadow: 0 0 30px rgba(255,51,51,0.2);
+        }
+        
+        .gaming {
+            background: radial-gradient(circle at top right, rgba(0,240,255,0.1), #050505);
+        }
+        .gaming:hover {
+            border-color: rgba(0,240,255,0.5);
+            box-shadow: 0 0 30px rgba(0,240,255,0.2);
+        }
+
+        .lifestyle-card h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-head);
+            z-index: 2;
+            position: relative;
+        }
+        .fitness h2 { color: var(--accent-red); }
+        .gaming h2 { color: var(--accent-cyan); }
+        
+        .lifestyle-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Decorative Backgrounds in Cards */
+        .dec-icon {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 15rem;
+            opacity: 0.05;
+            z-index: 1;
+            transition: 0.5s ease;
+        }
+        .lifestyle-card:hover .dec-icon {
+            transform: scale(1.1) rotate(-10deg);
+            opacity: 0.1;
+        }
+
+        @media (max-width: 900px) {
+            .lifestyle-split { flex-direction: column; }
+            .lifestyle-card { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preloader">
+        <h1>LIFESTYLE</h1>
+        <div class="loading-bar-wrapper">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <div class="page-transition">
+        <div class="transition-text">LIFESTYLE</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav>
+        <div class="logo">A.PS</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="career.html">Career</a>
+            <a href="projects.html">Projects</a>
+            <a href="travel-lifestyle.html" class="active">Lifestyle</a>
+        </div>
+    </nav>
+
+    <div class="page-header" data-aos="fade-down">
+        <p class="text-gold" style="font-size: 1.2rem; letter-spacing: 2px;">Beyond the Screen</p>
+        <h1 class="glow-gold">Life & Passions</h1>
+    </div>
+
+    <!-- Travel Diary -->
+    <section style="padding-top: 0;">
+        <div class="travel-grid">
+            <div class="travel-card" data-aos="fade-up" data-aos-delay="0">
+                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f0a?q=80&w=800&auto=format&fit=crop" alt="Hyderabad">
+                <div class="travel-overlay">
+                    <h3>Hyderabad</h3>
+                    <p>Rich history, royal heritage, and the glorious Charminar.</p>
+                </div>
+            </div>
+            
+            <div class="travel-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1582236894348-1ad076a0669b?q=80&w=800&auto=format&fit=crop" alt="Wagah Border">
+                <div class="travel-overlay">
+                    <h3>Wagah Border</h3>
+                    <p>The electrifying retreat ceremony and unmatched patriotic energy.</p>
+                </div>
+            </div>
+
+            <div class="travel-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=800&auto=format&fit=crop" alt="Taj Mahal">
+                <!-- Using a generic India/Taj Mahal vibe image source placeholder from unsplash -->
+                <!-- Actually let's use a specific Taj Mahal image -->
+                <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=800&auto=format&fit=crop" alt="Taj Mahal" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;">
+                <div class="travel-overlay">
+                    <h3>Taj Mahal</h3>
+                    <p>Experiencing pristine white marble and the epitome of architectural beauty.</p>
+                </div>
+            </div>
+
+            <div class="travel-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1587556094396-728cd4bafecc?q=80&w=800&auto=format&fit=crop" alt="Golden Temple">
+                <div class="travel-overlay">
+                    <h3>Golden Temple</h3>
+                    <p>Finding spiritual serenity amidst the shimmering waters of Amritsar.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Split Lifestyle -->
+        <div class="lifestyle-split">
+            <!-- Fitness -->
+            <div class="lifestyle-card fitness" data-aos="fade-right">
+                <div class="dec-icon">🏋️</div>
+                <h2>The Iron Grind</h2>
+                <p>Discipline isn't just about code; it's wrought in iron. Fitness is a core pillar of my routine—pushing the limits physically translates to relentless problem-solving mentally.</p>
+                <div class="magnetic-wrap" style="margin-top: 2rem;">
+                    <button class="btn" style="border-color: var(--accent-red); color: var(--text-main);">My Routine</button>
+                </div>
+            </div>
+
+            <!-- Gaming & Anime -->
+            <div class="lifestyle-card gaming" data-aos="fade-left">
+                <div class="dec-icon">🎌</div>
+                <h2>Anime & Gaming</h2>
+                <p>When the IDE closes, I dive into immersive worlds. A massive One Piece fan (hence the easter egg!). Gaming and Anime aren't just entertainment—they're masterclasses in art direction, storytelling, and UI.</p>
+                <div class="magnetic-wrap" style="margin-top: 2rem;">
+                    <button class="btn" style="border-color: var(--accent-cyan); color: var(--text-main);">Current Favs</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('preloaderDone', () => {
+            AOS.init({ once: true });
+        });
+    </script>
+</body>
+</html>

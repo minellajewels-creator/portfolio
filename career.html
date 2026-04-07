@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career | Ashok PS</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        body {
+            /* Slight tint for tech theme */
+            background: transparent;
+        }
+        
+        .page-header {
+            padding-top: 150px;
+            text-align: center;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+        }
+
+        /* Matrix Canvas Background */
+        canvas#matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Timeline CSS */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 5rem auto;
+            padding: 2rem 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--accent-cyan);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+            box-shadow: var(--glow-cyan);
+        }
+        .container-box {
+            padding: 10px 40px;
+            position: relative;
+            background: inherit;
+            width: 50%;
+        }
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        .right {
+            left: 50%;
+        }
+        .container-box::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--bg-dark);
+            border: 4px solid var(--accent-cyan);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+        .right::after {
+            left: -10px;
+        }
+
+        .content {
+            padding: 2rem;
+            background: rgba(0, 240, 255, 0.05);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+        }
+        .content:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow-cyan);
+            transform: scale(1.02);
+        }
+
+        .content h2 {
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-head);
+        }
+        .content h4 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        .content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Education */
+        .education {
+            margin-top: 5rem;
+            text-align: center;
+        }
+        .edu-card {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 3rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            border-top: 3px solid var(--accent-cyan);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 31px; }
+            .container-box { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+            .container-box::after { left: 21px; }
+            .left::after { left: 21px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <h1>CAREER</h1>
+        <div class="loading-bar-wrapper">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="transition-text">CAREER</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">A.PS</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="career.html" class="active">Career</a>
+            <a href="projects.html">Projects</a>
+            <a href="travel-lifestyle.html">Lifestyle</a>
+        </div>
+    </nav>
+
+    <!-- Matrix Background -->
+    <canvas id="matrix"></canvas>
+
+    <div class="page-header" data-aos="fade-down" data-aos-duration="1000">
+        <p class="text-cyan">Professional Journey</p>
+        <h1 class="glow-cyan">Enterprise Tech</h1>
+    </div>
+
+    <section style="padding-top: 0;">
+        <div class="timeline">
+            <!-- Timeline Item 1 -->
+            <div class="container-box left" data-aos="fade-right">
+                <div class="content">
+                    <h2>SAP Developer</h2>
+                    <h4>Enterprise Inc. • Present</h4>
+                    <p>Spearheading the development of robust enterprise solutions. Working extensively with ABAP and Fiori to streamline complex business processes and ensure seamless global operations.</p>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 2 -->
+            <div class="container-box right" data-aos="fade-left">
+                <div class="content">
+                    <h2>Associate Consultant</h2>
+                    <h4>Tech Solutions • 2024 - 2025</h4>
+                    <p>Designed and developed OData services for integration. Optimized existing legacy code to improve system performance across multiple ERP modules.</p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="container-box left" data-aos="fade-right">
+                <div class="content">
+                    <h2>Intern / Junior Dev</h2>
+                    <h4>Tech Solutions • 2023 - 2024</h4>
+                    <p>Started the journey into enterprise software. Learned the intricacies of SAP architecture and contributed to module testing and bug fixes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="education" data-aos="fade-up">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                <h3 class="text-cyan" style="font-size: 2rem; margin-bottom: 0.5rem; font-family: var(--font-head);">Master of Computer Applications (MCA)</h3>
+                <h4 style="color: var(--text-main); margin-bottom: 1rem;">University Name • Present</h4>
+                <p class="text-muted">Pursuing advanced studies in computer science to deepen theoretical knowledge and practical engineering skills, perfectly aligned with the enterprise software development career path.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Matrix effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for( let x = 0; x < columns; x++ ) {
+            drops[x] = 1;
+        }
+
+        const draw = () => {
+            ctx.fillStyle = 'rgba(25, 25, 25, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#a0a0a0'; // Silver matrix
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        };
+
+        setInterval(draw, 50);
+
+        document.addEventListener('preloaderDone', () => {
+            AOS.init({ once: true });
+        });
+        
+        // Window resize handle
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

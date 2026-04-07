@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashok PS | Portfolio</title>
+    <!-- Meta SEO -->
+    <meta name="description"
+        content="Personal Portfolio of Ashok PS - Professional SAP developer, Entrepreneur, and Creator.">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Home Specific Styles */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 10;
+        }
+
+        .hero-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-img-wrap {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            padding: 15px;
+            background: linear-gradient(135deg, #1e1e1e, #d3d3d3, #7a7a7a, #1e1e1e);
+            animation: borderRotate 5s linear infinite;
+        }
+
+        .profile-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid var(--bg-dark);
+            z-index: 2;
+            position: relative;
+        }
+
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .typewriter {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            font-family: var(--font-head);
+            min-height: 40px;
+            margin-bottom: 2rem;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-family: var(--font-head);
+        }
+
+        .stat p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        /* About & Skills */
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-cyan);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        /* Skills specific */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-smooth);
+            transform-style: preserve-3d;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-10px);
+        }
+
+        .skill-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .skill-bar-wrap {
+            width: 100%;
+            height: 6px;
+            background: #222;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .skill-bar {
+            height: 100%;
+            background: var(--accent-cyan);
+        }
+
+        /* Contact & Footer */
+        .contact-section {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-family: var(--font-body);
+            transition: var(--transition-smooth);
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+        }
+
+        footer {
+            padding: 2rem 5vw;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .easter-egg {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -50px;
+            width: 40px;
+            opacity: 0.1;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .easter-egg:hover {
+            bottom: 10px;
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+
+            .hero,
+            .about-grid {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-img-container {
+                margin-top: 3rem;
+            }
+
+            .profile-img-wrap {
+                width: 250px;
+                height: 250px;
+            }
+
+            .stats-bar {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <h1>ASHOK PS</h1>
+        <div class="loading-bar-wrapper">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Page Transition -->
+    <div class="page-transition">
+        <div class="transition-text">ASHOK</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">ASHOK</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="career.html">Career</a>
+            <a href="projects.html">Projects</a>
+            <a href="travel-lifestyle.html">Lifestyle</a>
+        </div>
+    </nav>
+
+    <!-- Background Decoration -->
+    <div class="bg-gradient-radial"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-up" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+            <p class="text-cyan">Hello, I am</p>
+            <div class="glitch-wrapper">
+                <h1 class="glitch text-main" data-text="Ashok PS">Ashok PS</h1>
+            </div>
+            <div class="typewriter" id="typewriter"></div>
+            <div class="magnetic-wrap" style="margin-top: 1rem;">
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat">
+                    <h3 class="counter" data-target="3">0</h3>
+                    <p>Years IT Exp</p>
+                </div>
+                <div class="stat">
+                    <h3 class="counter" data-target="15">0</h3>
+                    <p>Projects</p>
+                </div>
+                <div class="stat" style="color: var(--accent-red)">
+                    <h3 class="counter" data-target="1">0</h3>
+                    <p>Founder</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-img-container" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="200">
+            <div class="profile-img-wrap">
+                <!-- Using the specified profile picture path -->
+                <!-- Please place your image here -->
+                <img src="assets/images/profile.jpg" alt="Ashok PS Profile"
+                    onerror="this.src='https://via.placeholder.com/350x350/111/fff?text=Ashok+PS'">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title" data-aos="fade-up">Who Am I?</h2>
+        <div class="about-grid">
+            <div class="about-img" data-aos="fade-right">
+                <!-- A futuristic placeholder for gym/poster energy -->
+                <div
+                    style="background: var(--bg-card); height: 400px; border-radius: 15px; border: 1px solid #333; display: flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                    <div
+                        style="position:absolute; width:150%; height:150%; background: radial-gradient(circle, rgba(255,0,0,0.1) 0%, transparent 60%);">
+                    </div>
+                    <h3
+                        style="font-family:var(--font-head); font-size: 3rem; transform: rotate(-10deg); opacity: 0.2; white-space:nowrap;">
+                        RELENTLESS</h3>
+                </div>
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <p>I am a dynamic individual blending the structure of <span class="text-cyan">enterprise
+                        software</span> with the creativity of <span class="text-gold">entrepreneurship</span>. As a
+                    professional SAP developer, I engineer robust systems.</p>
+                <p>Beyond the IDE, I founded <em>Minella Jewels</em> and build communities at <em>@bro_goats</em>. I
+                    lift heavy, travel often, and draw immense inspiration from anime.</p>
+                <div class="magnetic-wrap">
+                    <a href="career.html" class="btn">View Career</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="section-title glow-cyan" data-aos="fade-up">Arsenal</h2>
+        <div class="skills-grid">
+            <!-- Skill 1 -->
+            <div class="skill-card" data-aos="fade-up" data-tilt data-tilt-max="10" data-tilt-speed="400">
+                <h3 class="skill-title">SAP Development</h3>
+                <p class="text-muted">ABAP, Fiori, OData Services, Enterprise ERP systems.</p>
+                <div class="skill-bar-wrap">
+                    <div class="skill-bar" style="width: 0%;" data-width="90%"></div>
+                </div>
+            </div>
+            <!-- Skill 2 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-max="10"
+                data-tilt-speed="400">
+                <h3 class="skill-title">Web Development</h3>
+                <p class="text-muted">HTML/CSS, JavaScript, Modern Frameworks, Animations.</p>
+                <div class="skill-bar-wrap">
+                    <div class="skill-bar" style="background: var(--accent-gold); width: 0%;" data-width="85%"></div>
+                </div>
+            </div>
+            <!-- Skill 3 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-max="10"
+                data-tilt-speed="400">
+                <h3 class="skill-title">Business / Leadership</h3>
+                <p class="text-muted">E-commerce, Brand Management, Content Creation.</p>
+                <div class="skill-bar-wrap">
+                    <div class="skill-bar" style="background: var(--accent-red); width: 0%;" data-width="80%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <h2 class="section-title" data-aos="fade-up">Let's Connect</h2>
+        <div style="margin-bottom: 2rem; font-size: 1.1rem;" data-aos="fade-up">
+            <p>Email: <a href="mailto:ashokmarley1502@gmail.com" class="text-cyan">ashokmarley1502@gmail.com</a></p>
+            <p>Phone: <a href="tel:+919524527342" class="text-cyan">+91 9524527342</a></p>
+        </div>
+        <form class="contact-form" data-aos="fade-up" data-aos-delay="100">
+            <div class="input-group">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group">
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <div class="magnetic-wrap" style="align-self: center; margin-top: 1rem;">
+                <button type="submit" class="btn" style="background: transparent; color: white; cursor: none;">Send
+                    Message</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ashok PS. All rights reserved.</p>
+        <div class="socials">
+            <a href="#" class="text-muted" style="margin-right:1rem;">LinkedIn</a>
+            <a href="https://www.instagram.com/bro_goats/" target="_blank" class="text-muted"
+                style="margin-right:1rem;">Instagram</a>
+            <a href="#" class="text-muted">GitHub</a>
+        </div>
+        <!-- One Piece Easter Egg -->
+        <div class="easter-egg" title="Gomu Gomu no..." onclick="alert('The One Piece is real!')">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/90/One_Piece%2C_Volume_61_Cover_%28Art%29.jpg/220px-One_Piece%2C_Volume_61_Cover_%28Art%29.jpg"
+                style="width: 100%; border-radius: 5px;" alt="Egg">
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener('preloaderDone', () => {
+            AOS.init({ once: true });
+
+            // Typewriter Effect
+            const texts = ["SAP Developer", "Entrepreneur", "Content Creator", "Fitness Enthusiast"];
+            let count = 0;
+            let index = 0;
+            let currentText = "";
+            let letter = "";
+            let isDeleting = false;
+
+            function type() {
+                if (count === texts.length) count = 0;
+                currentText = texts[count];
+
+                if (isDeleting) {
+                    letter = currentText.slice(0, --index);
+                } else {
+                    letter = currentText.slice(0, ++index);
+                }
+
+                document.getElementById('typewriter').textContent = letter + '|';
+
+                let typeSpeed = isDeleting ? 50 : 150;
+
+                if (!isDeleting && letter.length === currentText.length) {
+                    typeSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && letter.length === 0) {
+                    isDeleting = false;
+                    count++;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            setTimeout(type, 1000); // Start after preloader
+
+            // Stat Counter Animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                gsap.to(counter, {
+                    innerHTML: target,
+                    duration: 2,
+                    snap: { innerHTML: 1 },
+                    scrollTrigger: counter // requires ScrollTrigger if added, wait I didn't add ScrollTrigger tag. Let's do it on scroll manually or AOS
+                });
+            });
+
+            // Skill Bars Animation
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+                // simple intersection observer
+                const observer = new IntersectionObserver(entries => {
+                    if (entries[0].isIntersecting) {
+                        bar.style.width = bar.getAttribute('data-width');
+                        bar.style.transition = 'width 1.5s ease-out';
+                    }
+                });
+                observer.observe(bar);
+            });
+        });
+    </script>
+</body>
+
+</html>
