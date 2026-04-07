@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* Home Specific Styles */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            overflow: hidden;
+            overflow-x: hidden;
+            position: relative;
         }
 
         .hero-content {
@@ -404,6 +404,13 @@
         </form>
     </section>
 
+    <!-- Interactive Draggable Widget -->
+    <div id="interactive-widget" class="glass" style="position: fixed; bottom: 30px; right: 30px; width: 220px; padding: 20px; border-radius: 15px; z-index: 10000; cursor: grab; background: rgba(255,255,255,0.05); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 32px 0 rgba(0,0,0,0.3);">
+        <h4 style="margin-bottom: 5px; color: var(--accent-cyan); font-family: var(--font-head); pointer-events: none;">Live Status</h4>
+        <p style="font-size: 0.9rem; color: var(--text-main); pointer-events: none;">Vibe: Coding ☕</p>
+        <p style="font-size: 0.75rem; margin-top: 8px; color: var(--text-muted); pointer-events: none;">(Drag me around!)</p>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Ashok PS. All rights reserved.</p>
@@ -489,6 +496,40 @@
                 });
                 observer.observe(bar);
             });
+
+            // Interactive Draggable Widget Logic
+            const widget = document.getElementById('interactive-widget');
+            let isDragging = false, offsetX, offsetY;
+
+            if(widget) {
+                const startDrag = (e) => {
+                    isDragging = true;
+                    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+                    offsetX = clientX - widget.getBoundingClientRect().left;
+                    offsetY = clientY - widget.getBoundingClientRect().top;
+                    widget.style.cursor = 'grabbing';
+                };
+                const drag = (e) => {
+                    if(!isDragging) return;
+                    e.preventDefault();
+                    const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+                    const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+                    widget.style.left = `${clientX - offsetX}px`;
+                    widget.style.top = `${clientY - offsetY}px`;
+                    widget.style.bottom = 'auto'; 
+                    widget.style.right = 'auto'; 
+                };
+                const endDrag = () => { isDragging = false; widget.style.cursor = 'grab'; };
+
+                widget.addEventListener('mousedown', startDrag);
+                document.addEventListener('mousemove', drag, {passive: false});
+                document.addEventListener('mouseup', endDrag);
+
+                widget.addEventListener('touchstart', startDrag, {passive: true});
+                document.addEventListener('touchmove', drag, {passive: false});
+                document.addEventListener('touchend', endDrag);
+            }
         });
     </script>
 </body>
